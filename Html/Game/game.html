@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мини-игра</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">Найди выход из лабиринта чтобы пройти!<br>Я долго работал над этим...</h1>
+        <div class="maze" id="maze">
+            <div class="player" id="player"></div>
+            <div class="exit" id="exit"></div>
+            <!-- Walls -->
+            <div class="wall" style="top: 0; left: 0; width: 280px; height: 10px;"></div>
+            <div class="wall" style="top: 0; left: 290px; width: 10px; height: 300px;"></div>
+            <div class="wall" style="top: 0; left: 0; width: 10px; height: 280px;"></div>
+            <div class="wall" style="top: 290px; left: 0; width: 290px; height: 10px;"></div>
+
+            <div class="wall" style="top: 40px; left: 40px; width: 10px; height: 80px;"></div>
+            <div class="wall" style="top: 40px; left: 50px; width: 60px; height: 10px;"></div>
+            <div class="wall" style="top: 90px; left: 100px; width: 10px; height: 100px;"></div>
+            <div class="wall" style="top: 140px; left: 40px; width: 60px; height: 10px;"></div>
+
+            <div class="wall" style="top: 40px; left: 140px; width: 100px; height: 10px;"></div>
+            <div class="wall" style="top: 40px; left: 240px; width: 10px; height: 80px;"></div>
+            <div class="wall" style="top: 110px; left: 140px; width: 100px; height: 10px;"></div>
+            <div class="wall" style="top: 110px; left: 140px; width: 10px; height: 40px;"></div>
+
+            <div class="wall" style="top: 180px; left: 50px; width: 90px; height: 10px;"></div>
+            <div class="wall" style="top: 180px; left: 50px; width: 10px; height: 60px;"></div>
+            <div class="wall" style="top: 230px; left: 50px; width: 160px; height: 10px;"></div>
+            <div class="wall" style="top: 230px; left: 200px; width: 10px; height: 50px;"></div>
+        </div>
+        <div id="message" class="message"></div> <!-- Перенесли сообщение сюда -->
+    </div>
+
+    <script>
+        const player = document.getElementById('player');
+        const maze = document.getElementById('maze');
+        const exit = document.getElementById('exit');
+        const message = document.getElementById('message');
+        const walls = document.querySelectorAll('.wall');
+
+        let offsetX, offsetY, initialX, initialY;
+
+        player.addEventListener('mousedown', function(e) {
+            e.preventDefault();
+            offsetX = e.clientX - player.getBoundingClientRect().left;
+            offsetY = e.clientY - player.getBoundingClientRect().top;
+            document.addEventListener('mousemove', mouseMove);
+            document.addEventListener('mouseup', mouseUp);
+        });
+
+        function mouseMove(e) {
+            const rect = maze.getBoundingClientRect();
+            const x = e.clientX - rect.left - offsetX;
+            const y = e.clientY - rect.top - offsetY;
+
+            movePlayer(x, y);
+        }
+
+        function mouseUp() {
+            document.removeEventListener('mousemove', mouseMove);
+            document.removeEventListener('mouseup', mouseUp);
+        }
+
+        player.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            offsetX = touch.clientX - player.getBoundingClientRect().left;
+            offsetY = touch.clientY - player.getBoundingClientRect().top;
+            initialX = player.offsetLeft;
+            initialY = player.offsetTop;
+            document.addEventListener('touchmove', touchMove);
+            document.addEventListener('touchend', touchEnd);
+        });
+
+        function touchMove(e) {
+            const touch = e.touches[0];
+            const rect = maze.getBoundingClientRect();
+            const x = touch.clientX - rect.left - offsetX;
+            const y = touch.clientY - rect.top - offsetY;
+
+            movePlayer(x, y);
+        }
+
+        function touchEnd() {
+            document.removeEventListener('touchmove', touchMove);
+            document.removeEventListener('touchend', touchEnd);
+        }
+
+        function movePlayer(x, y) {
+            const rect = maze.getBoundingClientRect();
+            if (x >= 0 && x <= rect.width - player.offsetWidth &&
+                y >= 0 && y <= rect.height - player.offsetHeight) {
+
+                player.style.left = x + 'px';
+                player.style.top = y + 'px';
+
+                for (let wall of walls) {
+                    if (isCollision(player, wall)) {
+                        player.style.left = initialX + 'px';
+                        player.style.top = initialY + 'px';
+                        return;
+                    }
+                }
+
+                if (isCollision(player, exit)) {
+                    message.innerHTML = '<h1>Поздравляю!</h1>';
+                    message.style.display = 'block'; // Показываем сообщение
+                    setTimeout(() => {
+                        window.location.href = '/Html/catch/catch.html'; // Замените на нужную страницу
+                    }, 3000);
+                } else {
+                    initialX = x;
+                    initialY = y;
+                }
+            }
+        }
+
+        function isCollision(a, b) {
+            const aRect = a.getBoundingClientRect();
+            const bRect = b.getBoundingClientRect();
+
+            return !(aRect.right < bRect.left || 
+                     aRect.left > bRect.right || 
+                     aRect.bottom < bRect.top || 
+                     aRect.top > bRect.bottom);
+        }
+    </script>
+</body>
+</html>

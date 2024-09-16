@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">Тест - 2</h1>
+        
+        <div class="quiz-item">
+            <p class="question">Какого числа я родился?</p>
+            <button onclick="checkAnswer(this)">22</button>
+            <button onclick="checkAnswer(this)">23</button>
+            <button onclick="checkAnswer(this)">10</button>
+            <p id="answer" class="result"></p>
+            <p id="redirect-timer" class="timer"></p>
+        </div>
+
+    </div>
+
+    <script>
+        // Установим правильный ответ в переменную
+        const correctAnswer = '22';
+
+        function checkAnswer(buttonElement) {
+            const userAnswer = buttonElement.textContent.trim().toLowerCase();
+            const resultElement = document.getElementById('answer');
+            const timerElement = document.getElementById('redirect-timer');
+
+            if (userAnswer === correctAnswer.toLowerCase()) {
+                resultElement.textContent = 'Правильно, молодец';
+                resultElement.style.color = 'green';
+                disableButtons(true);
+
+                let countdown = 3;
+                timerElement.textContent = `Перенаправление через ${countdown} секунд...`;
+                const interval = setInterval(() => {
+                    countdown--;
+                    if (countdown > 0) {
+                        timerElement.textContent = `Перенаправление через ${countdown} секунд...`;
+                    } else {
+                        clearInterval(interval);
+                        window.location.href = 'test3.html'; // Замените на URL нужной страницы
+                    }
+                }, 1000);
+            } else {
+                resultElement.textContent = 'Неправильно, к сожалению. Ну ничего, даты сложны запомнить.';
+                resultElement.style.color = 'red';
+            }
+        }
+
+        function disableButtons(disable) {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.disabled = disable;
+                button.style.backgroundColor = disable ? '#d3d3d3' : '#007BFF';
+            });
+        }
+    </script>
+</body>
+</html>

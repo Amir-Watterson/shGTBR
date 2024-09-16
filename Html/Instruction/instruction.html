@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инструкция</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="instruction.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="instruction-header">Инструкция</h1>
+        <div class="image-grid">
+            <div class="image-item">
+                <img src="/Photo/photo_1_2024-05-28_17-16-37.jpg" alt="Image 2">
+                <p class="image-text">Здесь ты должна просто ждать<br>оно само исчезнет</p>
+            </div>
+            <div class="image-item">
+                <img src="/Photo/Снимок экрана (406).png" alt="Image 3">
+                <p class="image-text">Есть места где установлен таймер<br> просто жди</p>
+            </div>
+            <div class="image-item">
+                <img src="/Photo/photo_3_2024-05-28_17-16-37.jpg" alt="Image 4">
+                <p class="image-text">Есть две мини игры<br> пройди их чтобы перейти на другую страницу</p>
+            </div>
+        </div>
+        <p>Весь сайт состоит из нескольких страниц, ты должна нажимать на кнопки и идти дальше<br>Также есть таймер который автоматически перенаправит тебя<br> Некоторые страницы не имееют таймера но они тоже автоматически перенаправляют</p>
+        <button class="continue-button" onclick="redirect()">Продолжить</button>
+    </div>
+    <script>
+        function redirect() {
+            window.location.href = '/Html/main/main.html'; // Замените на нужный URL
+        }
+    </script>
+</body>
+</html>

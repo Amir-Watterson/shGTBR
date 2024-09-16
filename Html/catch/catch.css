@@ -1,0 +1,100 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    background: url('https://th.bing.com/th/id/R.7ec075df797d4085122ef72f2bced8e4?rik=C51MAXKSmuLY9A&pid=ImgRaw&r=0') no-repeat center center fixed; /* Добавлено фоновое изображение */
+    background-size: cover;
+}
+
+.container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8); /* Полупрозрачный фон для улучшения читаемости текста */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px #FEC7B4;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #FEC7B4;
+    animation: fadeIn 2s ease-in-out;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.game-container {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+}
+
+.score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1.5rem;
+    color: #FEC7B4;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.game-over {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: #FEC7B4;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.falling-image {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.falling-image:hover {
+    transform: scale(1.2);
+}
+@media (max-width: 400px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .score, .game-over {
+        font-size: 1rem;
+        padding: 5px;
+    }
+
+    .falling-image {
+        width: 30px;
+        height: 30px;
+    }
+}

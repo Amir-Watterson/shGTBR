@@ -1,0 +1,132 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #333;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.image-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Увеличенное расстояние между изображениями */
+    margin: 20px 0;
+}
+
+.image-item {
+    text-align: center;
+}
+
+.image-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.image-text {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #555;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 20px 0;
+}
+
+button.continue-button {
+    margin-top: 20px;
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.5);
+    animation: fadeIn 2.5s ease-in-out;
+}
+
+button.continue-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.7);
+}
+
+button.continue-button:active {
+    background-color: #004085;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.6);
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.instruction-header {
+    padding-top: 20px;
+    font-size: 2.5rem;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Адаптивные стили */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+    h1 {
+        font-size: 1.2rem;
+    }
+    p {
+        font-size: 0.9rem;
+    }
+    .image-item {
+        flex: 1 1 calc(100% - 10px); /* Одна фотография в ряд на маленьких экранах */
+        max-width: calc(100% - 10px);
+    }
+    .image-grid {
+        gap: 10px;
+        flex-direction: column; /* Переводим flex-контейнер в вертикальное направление */
+        align-items: center; /* Центрируем изображения по горизонтали */
+    }
+    button.continue-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 1rem;
+    }
+    p {
+        font-size: 0.8rem;
+    }
+    button.continue-button {
+        padding: 8px 15px;
+        font-size: 0.8rem;
+    }
+}

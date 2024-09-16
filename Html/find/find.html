@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Найди звездочку</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="find.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Найди звездочку</h1>
+        <p class="description">На этой странице спрятана звездочка. Найдите её среди других изображений!</p>
+        <div class="images-container">
+            <img src="/Photo/eye.png" alt="Звездочка" class="game-image" onclick="checkAnswer(true)">
+            <img src="https://images.wallpaperscraft.ru/image/single/zvezdnoe_nebo_zvezdy_noch_1030850_300x168.jpg" alt="Круг" class="game-image" onclick="checkAnswer(false)">
+            <img src="https://images.wallpaperscraft.ru/image/single/mlechnyj_put_zvezdy_zvezdnoe_nebo_962149_300x168.jpg" alt="Треугольник" class="game-image" onclick="checkAnswer(false)">
+        </div>
+        <div id="result" class="result"></div>
+        <div id="timer" class="timer"></div>
+    </div>
+    <script src="find.js"></script>
+</body>
+</html>

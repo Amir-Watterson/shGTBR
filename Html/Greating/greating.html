@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="greating.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Как ты себя чувствуешь?</h1>
+        <button class="continue-button good-button" onclick="redirectGood()">Хорошо</button>
+        <button class="continue-button bad-button" onclick="redirectBad()">Плохо</button>
+    </div>
+    <script>
+        function redirectGood() {
+            window.location.href = '/Html/Fine/fine.html'; // Замените на нужный URL для "Хорошо"
+        }
+        
+        function redirectBad() {
+            window.location.href = '/Html/Unwell/unwell.html'; // Замените на нужный URL для "Плохо"
+        }
+    </script>
+</body>
+</html>

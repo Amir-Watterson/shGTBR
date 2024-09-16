@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Привет снова</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="voice.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">Твой голос</h1>
+        <div class="image-music-container">
+            <img src="/Photo/face2.jpg" alt="Здесь должна быть твоя фотка" class="flower-image"><br>
+            
+            <div class="music-container">
+                <audio class="music" controls>
+                    <source src="audio_2024-09-16_20-48-16.ogg" type="audio/mpeg">
+                    Ваш браузер не поддерживает аудио элемент.
+                </audio>
+                <p class="music-text">Твой голос, это прям рай для ушей</p>
+            </div>
+        </div>
+        <p class="description">У тебя очень красивый голос и четкая дикция.<br> Он спокойный и я бы сказал успокаивающий</p><br>
+        <button class="continue-button" onclick="redirect()">Продолжить</button>
+    </div>
+    <script>
+        function redirect() {
+            window.location.href = '/End/end.html'; // Замените на нужный URL
+        }
+    </script>
+</body>
+</html>
